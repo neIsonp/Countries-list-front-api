@@ -1,3 +1,4 @@
+import CountryCard from "@/components/countryCard";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,8 @@ export type Country = {
   languages?: {
     [key: string]: string;
   };
+  borders?: string[];
+  cca3: string;
 };
 
 async function getCountries(): Promise<Country[]> {
@@ -27,26 +30,14 @@ export default async function Home() {
   const countries = await getCountries();
 
   return (
-    <section className="grid grid-cols-5 w-full container gap-6 mt-16">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-6 mt-16">
       {countries.map((country) => (
-        <Link
-          href={`/country/${country.name.common}`}
+        <CountryCard
+          name={country.name.common}
+          flag={country.flags.svg}
+          flagAlt={country.flags.svg}
           key={country.name.common}
-        >
-          <article className="h-64 min-w-full p-2 border-2 rounded-xl hover:border-indigo-200 hover:shadow-xl transition-all">
-            <div className="relative w-full h-40 p-2 overflow-hidden rounded-xl">
-              <Image
-                src={country.flags.svg}
-                alt={country.flags.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <h1 className="font-bold text-xl text-center mt-1">
-              {country.name.common}
-            </h1>
-          </article>
-        </Link>
+        />
       ))}
     </section>
   );
