@@ -11,12 +11,12 @@ You can check out a live demo of this site [here](https://countries-list-front-a
 1. Clone this repository to your local machine:
 
    ```shell
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/neIsonp/Countries-list-front-api
 
 2. Navigate to the project directory:
 
    ```shell
-   cd your-repository
+   cd Countries-list-front-api
 
 3. Install the dependencies:
 
